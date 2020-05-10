@@ -6,7 +6,7 @@
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/13 09:02:40 by nkholane          #+#    #+#             */
-/*   Updated: 2020/05/10 21:15:27 by nokhwezi         ###   ########.fr       */
+/*   Updated: 2020/05/10 22:24:53 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	sort_five(t_lists *chk)
 		}
 	}
 	three_sort(chk);
-	back2a(chk);
+	pushback_a(chk);
 }
 
 void	sort(t_lists *chk, int lst_len)
@@ -81,7 +81,7 @@ void	sort(t_lists *chk, int lst_len)
 	}
 	while (ft_lstlen(chk->lst_a) >= 5)
 	{
-		get_chunk(chk, lst_len - 1);
+		get_many(chk, lst_len - 1);
 		lst_len = ft_lstlen(chk->lst_a);
 	}
 	while (chk->lst_a->norm != 3)
@@ -92,6 +92,6 @@ void	sort(t_lists *chk, int lst_len)
 	PB;
 	push_ab(&chk->lst_a, &chk->lst_b);
 	three_sort(chk);
-	back2a(chk);
+	pushback_a(chk);
 	three_reverse(chk);
 }

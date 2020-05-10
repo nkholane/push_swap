@@ -6,7 +6,7 @@
 #    By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/03 12:19:34 by nkholane          #+#    #+#              #
-#    Updated: 2020/05/10 21:31:32 by nokhwezi         ###   ########.fr        #
+#    Updated: 2020/05/10 22:26:02 by nokhwezi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ lib:
 	make re -C ./libft/
 
 
-SRC1=	checker.c ft_list.c get_args.c get_orders.c orders.c \
+SRC1=	checker.c lists.c get_args.c get_orders.c orders.c \
 lst_order.c ft_split.c frees.c sort_args.c \
 
-SRC2=	push_swap.c ft_list.c get_args.c get_orders.c orders.c \
+SRC2=	push_swap.c lists.c get_args.c get_orders.c orders.c \
 lst_order.c ft_split.c frees.c sort_args.c \
 push_sort.c sort.c
 

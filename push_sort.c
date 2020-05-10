@@ -6,7 +6,7 @@
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 11:40:55 by nkholane          #+#    #+#             */
-/*   Updated: 2020/05/10 21:08:43 by nokhwezi         ###   ########.fr       */
+/*   Updated: 2020/05/10 22:24:53 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		find_spec_next(t_lists *chk, int len, int num)
 	return (1);
 }
 
-int		get_chunk(t_lists *chk, int lst_len)
+int		get_many(t_lists *chk, int lst_len)
 {
 	int slen;
 
@@ -90,7 +90,7 @@ int		get_chunk(t_lists *chk, int lst_len)
 	return (1);
 }
 
-int		find_hi(t_lists *chk)
+int		find_high(t_lists *chk)
 {
 	t_stack *tmp;
 	int		ret;
@@ -109,11 +109,11 @@ int		find_hi(t_lists *chk)
 	return (ret);
 }
 
-int		back2a(t_lists *chk)
+int		pushback_a(t_lists *chk)
 {
 	int n;
 
-	n = find_hi(chk);
+	n = find_high(chk);
 	while (ft_lstlen(chk->lst_b) > 0)
 	{
 		if (chk->lst_b->norm == n)

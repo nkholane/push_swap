@@ -6,7 +6,7 @@
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 08:43:40 by nkholane          #+#    #+#             */
-/*   Updated: 2020/05/10 21:16:47 by nokhwezi         ###   ########.fr       */
+/*   Updated: 2020/05/10 22:43:00 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct		s_lists
 	char			**arr;
 	int				fd;
 	int				lst_len;
-	int				vis;
 }					t_lists;
 
 # define SA ft_putendl_fd("sa", 1);
@@ -51,33 +50,32 @@ int					sort_args(t_lists *chk, char *str);
 int					read_args(char *argv, t_lists *chk, int end);
 int					args(int argc, char **argv, t_lists *chk);
 int					normalise(t_lists *chk, size_t n);
-void				set_norm(int *arr, size_t n, t_lists *chk);
+int					find_spec_next(t_lists *chk, int len, int num);
 
+void				set_norm(int *arr, size_t n, t_lists *chk);
 int					read_instruction(t_lists *stk);
 int					swap_ab(t_stack *first);
 void				push_ab(t_stack **first, t_stack **second);
 void				rotate_ab(t_stack **lst);
 void				reverse_rotab(t_stack **lst);
 
-void				ft_intlstadd(t_stack **alst, t_stack *new);
 int					ft_lstlen(t_stack *lst);
-int					sort_int_tab(int *tab, size_t n);
 int					is_nums(char *str);
 t_stack				*ft_newlst(void);
 void				free_stack(t_stack *stack);
-
 t_stack				*sort_list(t_stack *lst, int (*cmp)(int, int));
 int					ascending(int a, int b);
 
-int					get_chunk(t_lists *chk, int lst_len);
-int					find_hi(t_lists *chk);
-int					back2a(t_lists *chk);
+int					get_many(t_lists *chk, int lst_len);
+int					find_high(t_lists *chk);
+int					pushback_a(t_lists *chk);
 void				three_sort(t_lists *chk);
 void				three_reverse(t_lists *chk);
 void				sort(t_lists *chk, int lst_len);
 int					find_next(t_lists *chk, int len, int range);
 
 char				**ft_split(char *str);
+void				free_mem(t_lists *chk);
 void				free_array(char **arr, int n);
 
 #endif
