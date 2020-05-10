@@ -29,7 +29,6 @@ typedef struct		s_lists
 	char			**arr;
 	int				fd;
 	int				lst_len;
-	int				vis;
 }					t_lists;
 
 # define SA ft_putendl_fd("sa", 1);
