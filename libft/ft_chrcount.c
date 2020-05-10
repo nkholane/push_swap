@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_chrcount.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/03 12:19:55 by nkholane          #+#    #+#             */
+/*   Created: 2020/05/03 12:45:42 by nkholane          #+#    #+#             */
 /*   Updated: 2020/05/10 15:15:44 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "checker.h"
-
-int		main(int argc, char **argv)
+int	ft_chrcount(const char *s, char c)
 {
-	int		lst_a;
-	t_lists	*chk;
+	int i;
+	int count;
 
-	if (argc <= 1)
-		return (0);
-	chk = (t_lists *)ft_memalloc(sizeof(t_lists));
-	chk->lst_len = 0;
-	lst_a = args(argc, argv, chk);
-	if (!lst_a)
+	i = 0;
+	count = 0;
+	while (s[i] != '\0')
 	{
-		ERROR;
-		exit(0);
+		if (s[i] == c)
+			count++;
+		i++;
 	}
-	if (!read_instruction(chk))
-	{
-		ERROR;
-		exit(0);
-	}
-	if (!sort_list(chk->lst_a, ascending) || ft_lstlen(chk->lst_b) > 0)
-	{
-		KO;
-		exit(0);
-	}
-	OK;
-	exit(1);
+	return (count);
 }

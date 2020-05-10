@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/03 12:20:05 by nokhwezi          #+#    #+#             */
-/*   Updated: 2020/05/03 12:20:09 by nokhwezi         ###   ########.fr       */
+/*   Created: 2020/05/03 12:20:05 by nkholane          #+#    #+#             */
+/*   Updated: 2020/05/10 21:12:41 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-t_stack		*ft_intlstnew(void)
+t_stack		*ft_newlst(void)
 {
 	t_stack	*new;
 
@@ -41,23 +41,4 @@ int			ft_lstlen(t_stack *lst)
 	}
 	lst = tmp;
 	return (c);
-}
-
-int			acending(int a, int b)
-{
-	return (a <= b);
-}
-
-void		del_extra(t_stack *lst)
-{
-	t_stack *tmp;
-
-	tmp = lst;
-	while (tmp)
-	{
-		if (tmp->next->norm < 0)
-			tmp->next = NULL;
-		tmp = tmp->next;
-	}
-	free(tmp);
 }

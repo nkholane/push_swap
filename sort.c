@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/08 09:02:40 by kmarchan          #+#    #+#             */
-/*   Updated: 2020/05/03 13:03:55 by nokhwezi         ###   ########.fr       */
+/*   Created: 2019/10/13 09:02:40 by nkholane          #+#    #+#             */
+/*   Updated: 2020/05/10 21:15:27 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-#include <strings.h>
 
-void	sort_thre(t_lists *chk)
+void	three_sort(t_lists *chk)
 {
 	while (!sort_list(chk->lst_a, ascending))
 	{
@@ -25,7 +24,7 @@ void	sort_thre(t_lists *chk)
 		else if (chk->lst_a->norm < chk->lst_a->next->norm)
 		{
 			RRA;
-			revrot_ab(&chk->lst_a);
+			reverse_rotab(&chk->lst_a);
 		}
 		else if (chk->lst_a->norm > chk->lst_a->next->norm)
 		{
@@ -35,36 +34,16 @@ void	sort_thre(t_lists *chk)
 	}
 }
 
-void	rra3(t_lists *chk)
+void	three_reverse(t_lists *chk)
 {
 	while (!sort_list(chk->lst_a, ascending))
 	{
 		RRA;
-		revrot_ab(&chk->lst_a);
+		reverse_rotab(&chk->lst_a);
 	}
 }
 
-int		find_5(t_lists *chk, int len, int smal)
-{
-	t_stack *tmp;
-	int		count;
-
-	count = 0;
-	tmp = chk->lst_a;
-	while (tmp)
-	{
-		if (tmp->norm <= smal)
-		{
-			if (count >= len / 2)
-				return (0);
-		}
-		count++;
-		tmp = tmp->next;
-	}
-	return (1);
-}
-
-void	sort_5(t_lists *chk)
+void	sort_five(t_lists *chk)
 {
 	while (ft_lstlen(chk->lst_a) > 3)
 	{
@@ -83,27 +62,27 @@ void	sort_5(t_lists *chk)
 			while (chk->lst_a->norm > 1)
 			{
 				RRA;
-				revrot_ab(&chk->lst_a);
+				reverse_rotab(&chk->lst_a);
 			}
 			PB;
 			push_ab(&chk->lst_a, &chk->lst_b);
 		}
 	}
-	sort_thre(chk);
+	three_sort(chk);
 	back2a(chk);
 }
 
-void	sort(t_lists *chk, int llen)
+void	sort(t_lists *chk, int lst_len)
 {
 	if (ft_lstlen(chk->lst_a) == 5)
 	{
-		sort_5(chk);
+		sort_five(chk);
 		exit(0);
 	}
 	while (ft_lstlen(chk->lst_a) >= 5)
 	{
-		get_chunk(chk, llen - 1);
-		llen = ft_lstlen(chk->lst_a);
+		get_chunk(chk, lst_len - 1);
+		lst_len = ft_lstlen(chk->lst_a);
 	}
 	while (chk->lst_a->norm != 3)
 	{
@@ -112,7 +91,7 @@ void	sort(t_lists *chk, int llen)
 	}
 	PB;
 	push_ab(&chk->lst_a, &chk->lst_b);
-	sort_thre(chk);
+	three_sort(chk);
 	back2a(chk);
-	rra3(chk);
+	three_reverse(chk);
 }

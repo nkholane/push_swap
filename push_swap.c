@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/03 12:19:13 by nokhwezi          #+#    #+#             */
-/*   Updated: 2020/05/03 13:03:49 by nokhwezi         ###   ########.fr       */
+/*   Created: 2020/05/03 12:19:13 by nkholane          #+#    #+#             */
+/*   Updated: 2020/05/10 20:15:58 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	free_mem(t_lists *chk)
 {
 	if (chk->arr)
-		free_ar(chk->arr, ft_lstlen(chk->lst_a));
+		free_array(chk->arr, ft_lstlen(chk->lst_a));
 	free_stack(chk->lst_a);
 	free(chk);
 	exit(0);
@@ -35,18 +35,18 @@ int		main(int argc, char **argv)
 	{
 		ERROR;
 		if (chk->arr)
-			free_ar(chk->arr, ft_lstlen(chk->lst_a));
+			free_array(chk->arr, ft_lstlen(chk->lst_a));
 		free(chk);
 		exit(0);
 	}
-	chk->llen = ft_lstlen(chk->lst_a);
-	if (chk->llen >= 2 && chk->llen <= 3)
+	chk->lst_len = ft_lstlen(chk->lst_a);
+	if (chk->lst_len >= 2 && chk->lst_len <= 3)
 	{
-		sort_thre(chk);
+		three_sort(chk);
 		free_mem(chk);
 	}
 	if (sort_list(chk->lst_a, ascending))
 		exit(0);
-	sort(chk, chk->llen);
+	sort(chk, chk->lst_len);
 	free_mem(chk);
 }

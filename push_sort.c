@@ -5,14 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/08 08:40:55 by kmarchan          #+#    #+#             */
-/*   Updated: 2020/05/03 13:03:25 by nokhwezi         ###   ########.fr       */
+/*   Created: 2019/08/07 11:40:55 by nkholane          #+#    #+#             */
+/*   Updated: 2020/05/10 21:08:43 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include "libft.h"
-#include <strings.h>
 
 int		find_next(t_lists *chk, int len, int range)
 {
@@ -56,23 +55,23 @@ int		find_spec_next(t_lists *chk, int len, int num)
 	return (1);
 }
 
-int		get_chunk(t_lists *chk, int llen)
+int		get_chunk(t_lists *chk, int lst_len)
 {
 	int slen;
 
 	slen = ft_lstlen(chk->lst_b);
-	while (ft_lstlen(chk->lst_b) - slen <= (llen / 5))
+	while (ft_lstlen(chk->lst_b) - slen <= (lst_len / 5))
 	{
-		if (chk->lst_a->norm >= (llen - (llen / 5)))
+		if (chk->lst_a->norm >= (lst_len - (lst_len / 5)))
 		{
 			PB;
 			push_ab(&chk->lst_a, &chk->lst_b);
 		}
 		else
 		{
-			if (find_next(chk, llen, (llen / 5)) == 1)
+			if (find_next(chk, lst_len, (lst_len / 5)) == 1)
 			{
-				while (!(chk->lst_a->norm >= (llen - (llen / 5))))
+				while (!(chk->lst_a->norm >= (lst_len - (lst_len / 5))))
 				{
 					RA
 					rotate_ab(&chk->lst_a);
@@ -80,10 +79,10 @@ int		get_chunk(t_lists *chk, int llen)
 			}
 			else
 			{
-				while (!(chk->lst_a->norm >= (llen - (llen / 5))))
+				while (!(chk->lst_a->norm >= (lst_len - (lst_len / 5))))
 				{
 					RRA;
-					revrot_ab(&chk->lst_a);
+					reverse_rotab(&chk->lst_a);
 				}
 			}
 		}
@@ -128,7 +127,7 @@ int		back2a(t_lists *chk)
 			while (chk->lst_b->norm != n)
 			{
 				RRB;
-				revrot_ab(&chk->lst_b);
+				reverse_rotab(&chk->lst_b);
 			}
 		}
 		else

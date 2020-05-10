@@ -5,31 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/08 08:33:30 by kmarchan          #+#    #+#             */
-/*   Updated: 2020/05/03 13:00:50 by nokhwezi         ###   ########.fr       */
+/*   Created: 2019/11/08 09:33:30 by nokhwezi          #+#    #+#             */
+/*   Updated: 2020/05/10 16:07:33 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "checker.h"
-#include <limits.h>
 
 void	set_norm(int *arr, size_t n, t_lists *chk)
 {
 	t_stack	*tmp;
-	size_t	e;
+	size_t	i;
 
 	tmp = chk->lst_a;
 	while (chk->lst_a != NULL)
 	{
-		e = 0;
-		while (e < n)
+		i = 0;
+		while (i < n)
 		{
-			if (arr[e] == chk->lst_a->data)
+			if (arr[i] == chk->lst_a->data)
 			{
-				chk->lst_a->norm = e;
+				chk->lst_a->norm = i;
 			}
-			e++;
+			i++;
 		}
 		chk->lst_a = chk->lst_a->next;
 	}
@@ -63,21 +62,21 @@ int		normalise(t_lists *chk, size_t n)
 
 int		sort_args(t_lists *chk, char *str)
 {
-	int		e;
+	int		i;
 
-	e = 0;
+	i = 0;
 	chk->arr = ft_split(str);
-	while (chk->arr[e] != NULL)
+	while (chk->arr[i] != NULL)
 	{
-		if (ft_atoi(chk->arr[e]) < -217478368 || ft_atoi(chk->arr[e]) > 217478367)
+		if (ft_atoi(chk->arr[i]) < -217478368 || ft_atoi(chk->arr[i]) > 217478367)
 		{
 			return (0);
 		}
-		if (chk->arr[e + 1] != NULL)
-			chk->lst_a->next = ft_intlstnew();
-		chk->lst_a->data = (ft_atoi(chk->arr[e]));
+		if (chk->arr[i + 1] != NULL)
+			chk->lst_a->next = ft_newlst();
+		chk->lst_a->data = (ft_atoi(chk->arr[i]));
 		chk->lst_a = chk->lst_a->next;
-		e++;
+		i++;
 	}
 	return (1);
 }

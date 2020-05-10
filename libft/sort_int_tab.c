@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   sort_int_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/03 12:19:55 by nkholane          #+#    #+#             */
-/*   Updated: 2020/05/10 15:15:44 by nokhwezi         ###   ########.fr       */
+/*   Created: 2019/07/25 10:05:26 by nkholane          #+#    #+#             */
+/*   Updated: 2020/05/10 15:27:25 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/checker.h"
 #include "libft.h"
-#include "checker.h"
 
-int		main(int argc, char **argv)
+int		sort_int_tab(int *tab, size_t n)
 {
-	int		lst_a;
-	t_lists	*chk;
+	unsigned int i;
+	unsigned int j;
 
-	if (argc <= 1)
-		return (0);
-	chk = (t_lists *)ft_memalloc(sizeof(t_lists));
-	chk->lst_len = 0;
-	lst_a = args(argc, argv, chk);
-	if (!lst_a)
+	i = 0;
+	while (i < n)
 	{
-		ERROR;
-		exit(0);
+		j = 0;
+		while (j < n - 1)
+		{
+			if (tab[j + 1] == tab[j])
+				return (0);
+			if (tab[j + 1] < tab[j])
+			{
+				ft_swap(&tab[j + 1], &tab[j]);
+			}
+			j++;
+		}
+		i++;
 	}
-	if (!read_instruction(chk))
-	{
-		ERROR;
-		exit(0);
-	}
-	if (!sort_list(chk->lst_a, ascending) || ft_lstlen(chk->lst_b) > 0)
-	{
-		KO;
-		exit(0);
-	}
-	OK;
-	exit(1);
+	return (1);
 }

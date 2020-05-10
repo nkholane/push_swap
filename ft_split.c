@@ -5,75 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/03 14:02:57 by nokhwezi          #+#    #+#             */
-/*   Updated: 2020/05/03 14:02:57 by nokhwezi         ###   ########.fr       */
+/*   Created: 2020/05/03 14:02:57 by nkholane          #+#    #+#             */
+/*   Updated: 2020/05/10 21:23:01 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings.h>
 #include "libft.h"
 
-static int			ft_strc(char const *s)
+char		**ft_split(char *str)
 {
 	int		i;
-	int		count;
-	int		len;
+	int		j;
+	int		k;
+	char	**split;
 
-	len = ft_strlen(s);
 	i = 0;
-	count = 0;
-	while (i < len)
+	k = 0;
+	if (!(split = (char **)malloc(sizeof(char *) * 256)))
+		return (NULL);
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
+		i += 1;
+	while (str[i])
 	{
-		while (ft_isspace(s[i]) == 1 && s[i] != '\0')
-		{
-			i++;
-			if (s[i] == '\0')
-				return (count);
-		}
-		while (ft_isspace(s[i]) != 1 && s[i] != '\0')
-			i++;
-		count++;
+		j = 0;
+		if (!(split[k] = (char *)malloc(sizeof(char) * 4096)))
+			return (NULL);
+		while (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && str[i])
+			split[k][j++] = str[i++];
+		while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
+			i += 1;
+		split[k][j] = '\0';
+		k += 1;
 	}
-	return (count);
-}
-
-static void			ft_strpull(int w, char **ret, char *str)
-{
-	int		i;
-	int		len;
-
-	len = 0;
-	i = 0;
-	while (str[len] && ft_isspace(str[len]) == 0)
-		len++;
-	ret[w] = (char*)malloc(len + 1);
-	while (i < len)
-	{
-		ret[w][i] = *str;
-		i++;
-		str++;
-	}
-	ret[w][i] = '\0';
-}
-
-char				**ft_split(char *str)
-{
-	int		words;
-	char	**ret;
-	int		i;
-
-	words = ft_strc(str);
-	ret = (char**)malloc(sizeof(*ret) * words + 1);
-	i = 0;
-	while (i < words)
-	{
-		while (ft_isspace(*str) == 1 && *str != '\0')
-			str++;
-		ft_strpull(i, ret, str);
-		while (ft_isspace(*str) != 1 && *str != '\0')
-			str++;
-		i++;
-	}
-	ret[words] = NULL;
-	return (ret);
+	split[k] = NULL;
+	return (split);
 }

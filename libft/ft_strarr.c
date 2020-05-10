@@ -1,43 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_strarr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/03 12:19:55 by nkholane          #+#    #+#             */
+/*   Created: 2020/05/03 12:53:23 by nkholane          #+#    #+#             */
 /*   Updated: 2020/05/10 15:15:44 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "checker.h"
 
-int		main(int argc, char **argv)
+char	**ft_strarr(const char *s, char **dest, char c, size_t w)
 {
-	int		lst_a;
-	t_lists	*chk;
+	size_t	i;
+	size_t	n;
+	size_t	a;
 
-	if (argc <= 1)
-		return (0);
-	chk = (t_lists *)ft_memalloc(sizeof(t_lists));
-	chk->lst_len = 0;
-	lst_a = args(argc, argv, chk);
-	if (!lst_a)
+	i = 0;
+	a = 0;
+	if (!dest)
+		return (NULL);
+	while (s[i] && a < w)
 	{
-		ERROR;
-		exit(0);
+		n = 0;
+		while (s[i] == c)
+			i++;
+		while (s[i] != c)
+		{
+			n++;
+			i++;
+		}
+		dest[a] = ft_strsub(s, i - n, n);
+		a++;
 	}
-	if (!read_instruction(chk))
-	{
-		ERROR;
-		exit(0);
-	}
-	if (!sort_list(chk->lst_a, ascending) || ft_lstlen(chk->lst_b) > 0)
-	{
-		KO;
-		exit(0);
-	}
-	OK;
-	exit(1);
+	dest[a] = (NULL);
+	return (dest);
 }

@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_strtrimc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/03 12:19:55 by nkholane          #+#    #+#             */
-/*   Updated: 2020/05/10 15:15:44 by nokhwezi         ###   ########.fr       */
+/*   Created: 2020/05/09 18:40:16 by nkholane          #+#    #+#             */
+/*   Updated: 2020/05/10 16:08:02 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "checker.h"
 
-int		main(int argc, char **argv)
+char	*ft_strtrimc(char const *s, char c)
 {
-	int		lst_a;
-	t_lists	*chk;
+	size_t	i;
+	size_t	j;
+	size_t	n;
+	char	*t;
 
-	if (argc <= 1)
-		return (0);
-	chk = (t_lists *)ft_memalloc(sizeof(t_lists));
-	chk->lst_len = 0;
-	lst_a = args(argc, argv, chk);
-	if (!lst_a)
-	{
-		ERROR;
-		exit(0);
-	}
-	if (!read_instruction(chk))
-	{
-		ERROR;
-		exit(0);
-	}
-	if (!sort_list(chk->lst_a, ascending) || ft_lstlen(chk->lst_b) > 0)
-	{
-		KO;
-		exit(0);
-	}
-	OK;
-	exit(1);
+	i = 0;
+	if (!s)
+		return (NULL);
+	j = ft_strlen(s);
+	while (s[i] == c && s[i])
+		i++;
+	while (s[j - 1] == c)
+		j--;
+	if (i > j)
+		return ("");
+	n = (j - i);
+	t = (char *)ft_strsub(s, i, n);
+	if (!t)
+		return (NULL);
+	t[n] = '\0';
+	return (t);
 }
