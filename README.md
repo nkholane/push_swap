@@ -12,8 +12,11 @@
 The rules the algorithm had to follow is that it can only store the number in two stacks, two arrays of int which follow the "last in, first out" principle. At the begining, the numbers given as parameters are stored in pile a. The algorithm can only use the following instructions :
 
 (sa) swap a - Swap the first two elements of a.
+
 (sb) swap b - Swap the first two elements of b.
+
 (ss) sa and sb at the same time.
+
 (pa) push a - Take the first element from top of b and put it on a.
 (pb) push b - Take the first element from top of a and put it on b.
 (ra) rotate a - Shift of a position all elements of a (towards the top, the first element becomes the last).
