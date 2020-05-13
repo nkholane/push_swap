@@ -11,16 +11,24 @@
 
 The rules the algorithm had to follow is that it can only store the number in two stacks, two arrays of int which follow the "last in, first out" principle. At the begining, the numbers given as parameters are stored in pile a. The algorithm can only use the following instructions :
 
-| Name | Effect |
-|:----:|:------:|
-| pa | Push the top number of stack b onto stack a |
-| pb | Push the top number of stack a onto stack b |
-| ra | Places the top number of stack a to the bottom of stack a |
-| rb | Places the top number of stack b to the bottom of stack b |
-| rr | Equivalent of ra rb |
-| rra | Places the bottom number of stack a at the top of stack a |
-| rrb | Places the bottom number of stack b at the top of stack b |
-| rrr | Equivalent of rra rrb |
-| sa | Swaps the two top numbers of stack a |
-| sb | Swaps the two top numbers of stack b |
-| ss | Equivalent of sa sb |
+(sa) swap a - Swap the first two elements of a.
+
+(sb) swap b - Swap the first two elements of b.
+
+(ss) sa and sb at the same time.
+
+(pa) push a - Take the first element from top of b and put it on a.
+
+(pb) push b - Take the first element from top of a and put it on b.
+
+(ra) rotate a - Shift of a position all elements of a (towards the top, the first element becomes the last).
+
+(rb) rotate b - Shift of a position all elements of b (towards the top, the first element becomes the last).
+
+(rr) ra and rb at the same time.
+
+(rra) reverse rotate a (towards the bottom, the last element becomes the first).
+
+(rrb) reverse rotate b (towards the bottom, the last element becomes the first).
+
+(rrr) rra and rrb at the same time.
