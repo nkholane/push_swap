@@ -6,7 +6,7 @@
 #    By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/03 12:19:34 by nkholane          #+#    #+#              #
-#    Updated: 2020/05/10 22:26:02 by nokhwezi         ###   ########.fr        #
+#    Updated: 2020/05/13 09:59:27 by nokhwezi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,11 +23,11 @@ lib:
 
 
 SRC1=	checker.c lists.c get_args.c get_orders.c orders.c \
-lst_order.c ft_split.c frees.c sort_args.c \
+lst_order.c ft_split.c frees.c sort_args.c three_sort.c \
 
 SRC2=	push_swap.c lists.c get_args.c get_orders.c orders.c \
-lst_order.c ft_split.c frees.c sort_args.c \
-push_sort.c sort.c
+lst_order.c ft_split.c three_sort.c frees.c sort_args.c \
+push_sort.c sort_check.c
 
 OBJ1=	$(SRC1:.c=.o)
 

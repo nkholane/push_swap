@@ -1,43 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   three_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/03 12:19:13 by nkholane          #+#    #+#             */
+/*   Created: 2020/05/13 09:45:00 by nokhwezi          #+#    #+#             */
 /*   Updated: 2020/05/13 10:44:10 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-#include "libft.h"
 
-int		main(int argc, char **argv)
+void	three_sort(t_lists *head)
 {
-	int		lst_a;
-	t_lists	*head;
+	while (!sort_list(head->lst_a, ascending))
+	{
+		if (head->lst_a->puts == 2)
+		{
+			RA;
+			rotate_ab(&head->lst_a);
+		}
+		else if (head->lst_a->puts < head->lst_a->next->puts)
+		{
+			RRA;
+			reverse_rotab(&head->lst_a);
+		}
+		else if (head->lst_a->puts > head->lst_a->next->puts)
+		{
+			SA;
+			swap_ab(head->lst_a);
+		}
+	}
+}
 
-	if (argc <= 1)
-		return (0);
-	head = (t_lists *)ft_memalloc(sizeof(t_lists));
-	lst_a = args(argc, argv, head);
-	if (!lst_a)
+void	three_reverse(t_lists *head)
+{
+	while (!sort_list(head->lst_a, ascending))
 	{
-		ERROR;
-		if (head->arr)
-			free_array(head->arr, ft_lstlen(head->lst_a));
-		free(head);
-		exit(0);
+		RRA;
+		reverse_rotab(&head->lst_a);
 	}
-	head->lst_len = ft_lstlen(head->lst_a);
-	if (head->lst_len >= 2 && head->lst_len <= 3)
-	{
-		three_sort(head);
-		free_mem(head);
-	}
-	if (sort_list(head->lst_a, ascending))
-		exit(0);
-	sort(head, head->lst_len);
-	free_mem(head);
 }
