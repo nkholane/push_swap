@@ -60,7 +60,7 @@ int		get_many(t_lists *head, int lst_len)
 	int slen;
 
 	slen = ft_lstlen(head->lst_b);
-	while (ft_lstlen(head->lst_b) - slen <= (lst_len / 5))
+	while (slen - slen <= (lst_len / 5))
 	{
 		if (head->lst_a->puts >= (lst_len - (lst_len / 5)))
 		{
