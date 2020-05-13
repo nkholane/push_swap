@@ -6,7 +6,7 @@
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 12:18:51 by nkholane          #+#    #+#             */
-/*   Updated: 2020/05/13 10:04:14 by nokhwezi         ###   ########.fr       */
+/*   Updated: 2020/05/10 15:39:10 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		swap_ab(t_stack *first)
 	if (ft_lstlen(first) <= 1)
 		return (0);
 	ft_swap(&first->data, &first->next->data);
-	ft_swap(&first->puts, &first->next->puts);
+	ft_swap(&first->norm, &first->next->norm);
 	return (1);
 }
 

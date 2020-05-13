@@ -6,23 +6,23 @@
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 11:40:55 by nkholane          #+#    #+#             */
-/*   Updated: 2020/05/13 10:44:10 by nokhwezi         ###   ########.fr       */
+/*   Updated: 2020/05/10 22:24:53 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include "libft.h"
 
-int		find_next(t_lists *head, int len, int range)
+int		find_next(t_lists *chk, int len, int range)
 {
 	t_stack *tmp;
 	int		count;
 
 	count = 0;
-	tmp = head->lst_a;
+	tmp = chk->lst_a;
 	while (tmp)
 	{
-		if (tmp->puts >= (len - range))
+		if (tmp->norm >= (len - range))
 		{
 			if (count >= len / 2)
 				return (0);
@@ -33,16 +33,16 @@ int		find_next(t_lists *head, int len, int range)
 	return (1);
 }
 
-int		find_spec_next(t_lists *head, int len, int num)
+int		find_spec_next(t_lists *chk, int len, int num)
 {
 	t_stack *tmp;
 	int		count;
 
 	count = 0;
-	tmp = head->lst_b;
+	tmp = chk->lst_b;
 	while (tmp != NULL)
 	{
-		if (tmp->puts == num)
+		if (tmp->norm == num)
 		{
 			if (count > (len / 2))
 				return (0);
@@ -55,34 +55,34 @@ int		find_spec_next(t_lists *head, int len, int num)
 	return (1);
 }
 
-int		get_many(t_lists *head, int lst_len)
+int		get_many(t_lists *chk, int lst_len)
 {
 	int slen;
 
-	slen = ft_lstlen(head->lst_b);
-	while (slen - slen <= (lst_len / 5))
+	slen = ft_lstlen(chk->lst_b);
+	while (ft_lstlen(chk->lst_b) - slen <= (lst_len / 5))
 	{
-		if (head->lst_a->puts >= (lst_len - (lst_len / 5)))
+		if (chk->lst_a->norm >= (lst_len - (lst_len / 5)))
 		{
 			PB;
-			push_ab(&head->lst_a, &head->lst_b);
+			push_ab(&chk->lst_a, &chk->lst_b);
 		}
 		else
 		{
-			if (find_next(head, lst_len, (lst_len / 5)) == 1)
+			if (find_next(chk, lst_len, (lst_len / 5)) == 1)
 			{
-				while (!(head->lst_a->puts >= (lst_len - (lst_len / 5))))
+				while (!(chk->lst_a->norm >= (lst_len - (lst_len / 5))))
 				{
 					RA
-					rotate_ab(&head->lst_a);
+					rotate_ab(&chk->lst_a);
 				}
 			}
 			else
 			{
-				while (!(head->lst_a->puts >= (lst_len - (lst_len / 5))))
+				while (!(chk->lst_a->norm >= (lst_len - (lst_len / 5))))
 				{
 					RRA;
-					reverse_rotab(&head->lst_a);
+					reverse_rotab(&chk->lst_a);
 				}
 			}
 		}
@@ -90,52 +90,52 @@ int		get_many(t_lists *head, int lst_len)
 	return (1);
 }
 
-int		find_high(t_lists *head)
+int		find_high(t_lists *chk)
 {
 	t_stack *tmp;
 	int		ret;
 
 	ret = 0;
-	tmp = head->lst_b;
-	while (head->lst_b)
+	tmp = chk->lst_b;
+	while (chk->lst_b)
 	{
-		if (head->lst_b->puts > ret)
+		if (chk->lst_b->norm > ret)
 		{
-			ret = head->lst_b->puts;
+			ret = chk->lst_b->norm;
 		}
-		head->lst_b = head->lst_b->next;
+		chk->lst_b = chk->lst_b->next;
 	}
-	head->lst_b = tmp;
+	chk->lst_b = tmp;
 	return (ret);
 }
 
-int		pushback_a(t_lists *head)
+int		pushback_a(t_lists *chk)
 {
 	int n;
 
-	n = find_high(head);
-	while (ft_lstlen(head->lst_b) > 0)
+	n = find_high(chk);
+	while (ft_lstlen(chk->lst_b) > 0)
 	{
-		if (head->lst_b->puts == n)
+		if (chk->lst_b->norm == n)
 		{
 			PA;
-			push_ab(&head->lst_b, &head->lst_a);
+			push_ab(&chk->lst_b, &chk->lst_a);
 			n--;
 		}
-		else if (find_spec_next(head, ft_lstlen(head->lst_b), n) == 0)
+		else if (find_spec_next(chk, ft_lstlen(chk->lst_b), n) == 0)
 		{
-			while (head->lst_b->puts != n)
+			while (chk->lst_b->norm != n)
 			{
 				RRB;
-				reverse_rotab(&head->lst_b);
+				reverse_rotab(&chk->lst_b);
 			}
 		}
 		else
 		{
-			while (head->lst_b->puts != n)
+			while (chk->lst_b->norm != n)
 			{
 				RB;
-				rotate_ab(&head->lst_b);
+				rotate_ab(&chk->lst_b);
 			}
 		}
 	}
