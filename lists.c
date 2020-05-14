@@ -22,7 +22,7 @@ t_stack		*ft_newlst(void)
 		return (NULL);
 	}
 	new->data = -3;
-	new->norm = -3;
+	new->puts = -3;
 	new->next = NULL;
 	return (new);
 }

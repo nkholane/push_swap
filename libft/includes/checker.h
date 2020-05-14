@@ -6,7 +6,7 @@
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 08:43:40 by nkholane          #+#    #+#             */
-/*   Updated: 2020/05/10 22:43:00 by nokhwezi         ###   ########.fr       */
+/*   Updated: 2020/05/14 01:36:25 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef struct		s_stack
 {
 	int				data;
-	int				norm;
+	int				puts;
 	struct s_stack	*next;
 }					t_stack;
 
@@ -46,13 +46,13 @@ typedef struct		s_lists
 # define ERROR ft_putendl_fd("Error", 2);
 # define OK ft_putendl_fd("OK", 2);
 
-int					sort_args(t_lists *chk, char *str);
-int					read_args(char *argv, t_lists *chk, int end);
-int					args(int argc, char **argv, t_lists *chk);
-int					normalise(t_lists *chk, size_t n);
-int					find_spec_next(t_lists *chk, int len, int num);
+int					sort_args(t_lists *head, char *str);
+int					read_args(char *argv, t_lists *head, int end);
+int					args(int argc, char **argv, t_lists *head);
+int					put_back(t_lists *head, size_t n);
+int					find_spec_next(t_lists *head, int len, int num);
 
-void				set_norm(int *arr, size_t n, t_lists *chk);
+void				put_set(int *arr, size_t n, t_lists *head);
 int					read_instruction(t_lists *stk);
 int					swap_ab(t_stack *first);
 void				push_ab(t_stack **first, t_stack **second);
@@ -66,16 +66,16 @@ void				free_stack(t_stack *stack);
 t_stack				*sort_list(t_stack *lst, int (*cmp)(int, int));
 int					ascending(int a, int b);
 
-int					get_many(t_lists *chk, int lst_len);
-int					find_high(t_lists *chk);
-int					pushback_a(t_lists *chk);
-void				three_sort(t_lists *chk);
-void				three_reverse(t_lists *chk);
-void				sort(t_lists *chk, int lst_len);
-int					find_next(t_lists *chk, int len, int range);
+int					get_many(t_lists *head, int lst_len);
+int					find_high(t_lists *head);
+int					pushback_a(t_lists *head);
+void				three_sort(t_lists *head);
+void				three_reverse(t_lists *head);
+void				sort(t_lists *head, int lst_len);
+int					find_next(t_lists *head, int len, int range);
 
 char				**ft_split(char *str);
-void				free_mem(t_lists *chk);
+void				free_mem(t_lists *head);
 void				free_array(char **arr, int n);
 
 #endif

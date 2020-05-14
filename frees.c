@@ -6,7 +6,7 @@
 /*   By: nokhwezi <nokhwezi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 11:33:39 by nkholane          #+#    #+#             */
-/*   Updated: 2020/05/10 21:21:49 by nokhwezi         ###   ########.fr       */
+/*   Updated: 2020/05/14 02:31:24 by nokhwezi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@ void	free_array(char **ar, int n)
 		free(ar[i]);
 		i++;
 	}
+}
+
+void	free_mem(t_lists *head)
+{
+	if (head->arr)
+		free_array(head->arr, ft_lstlen(head->lst_a));
+	free_stack(head->lst_a);
+	free(head);
+	exit(0);
 }
 
 void	free_stack(t_stack *stack)
